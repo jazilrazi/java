@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="checkAccess">Check Admin Access</button>
+  <p id="result"></p>
+    <script>
+         let userName = "Alice";
+    let userAge = 20;
+    let isAdmin = true;
+    let user = {
+      name: userName,
+      age: userAge,
+      admin: isAdmin
+    };
+    document.getElementById("checkAccess").addEventListener("click", function() {
+      let message = (user.age >= 18 && user.admin) 
+        ? "Access Granted" 
+        : "Access Denied";
+      document.getElementById("result").textContent = message;
+      console.log("age exists:", "age" in user);
+      delete user.age;
+      console.log(user);
+    });
+    </script>
+    
+</body>
+</html>
