@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <button id="checkReturn">Check Return Eligibility</button>
+  <p id="result"></p>
+
+  <script>
+    // Create order object
+    let order = {
+      itemName: "Wireless Mouse",
+      isDelivered: true,
+      daysSinceDelivery: 5
+    };
+    document.getElementById("checkReturn").addEventListener("click", function() {
+      let message = (order.isDelivered && order.daysSinceDelivery <= 7) 
+        ? "Eligible for Return" 
+        : "Return Period Expired";
+      document.getElementById("result").textContent = message;
+      console.log("itemName exists:", "itemName" in order);
+      delete order.daysSinceDelivery;
+      console.log(order);
+    });
+    </script>
+</body>
+</html>
