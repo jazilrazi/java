@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h2>Product List</h2>
+  <div id="allProducts"></div>
+  <h2>Products with Price > 50</h2>
+  <div id="filteredProducts"></div>
+  <h2>Updated Product List (after adding Watermelon)</h2>
+  <div id="updatedProducts"></div>
+  <script>
+    let products = ["Apple", "Banana", "Orange", "Mango"];
+    let prices = [50, 20, 60, 100];
+    let productList = products.map((product, index) => `Product: ${product} - Price: ${prices[index]}`);
+    let allDiv = document.getElementById("allProducts");
+    productList.forEach(item => {
+      allDiv.innerHTML += item + "<br>";
+    });
+    let filtered = products
+      .map((product, index) => ({ name: product, price: prices[index] }))
+      .filter(p => p.price > 50)
+      .map(p => `Product: ${p.name} - Price: ${p.price}`);
+
+    let filteredDiv = document.getElementById("filteredProducts");
+    filtered.forEach(item => {
+      filteredDiv.innerHTML += item + "<br>";
+    });
+    products.push("Watermelon");
+    prices.push(80);
+    let updatedList = products.map((product, index) => `Product: ${product} - Price: ${prices[index]}`);
+    let updatedDiv = document.getElementById("updatedProducts");
+    updatedList.forEach(item => {
+      updatedDiv.innerHTML += item + "<br>";
+    });
+    </script>
+</body>
+</html>
