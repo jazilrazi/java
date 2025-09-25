@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Student Result Dashboard</h2>
+  <div id="allStudents"></div>
+  <div id="above60"></div>
+  <div id="totalScore"></div>
+  <div id="allPassed"></div>
+  <div id="scoredAbove90"></div>
+  <div id="sortedStudents"></div>
+  <script>
+    let students = [
+      { name: "Alice", score: 85 },
+      { name: "Bob", score: 45 },
+      { name: "Charlie", score: 32 },
+      { name: "David", score: 95 },
+      { name: "Eve", score: 67 }
+    ];
+    let allNames = students.map(s => s.name);
+    document.getElementById("allStudents").innerHTML = "<b>All Students:</b> " + allNames.join(", ");
+    let above60 = students.filter(s => s.score > 60).map(s => s.name);
+    document.getElementById("above60").innerHTML = "<b>Scored > 60:</b> " + above60.join(", ");
+    let total = students.reduce((sum, s) => sum + s.score, 0);
+    document.getElementById("totalScore").innerHTML = "<b>Total Score:</b> " + total;
+    let allPassed = students.every(s => s.score > 35);
+    document.getElementById("allPassed").innerHTML = "<b>All Passed?</b> " + (allPassed ? "Yes" : "No");
+    let scoredAbove90 = students.some(s => s.score > 90);
+    document.getElementById("scoredAbove90").innerHTML = "<b>At least one scored > 90?</b> " + (scoredAbove90 ? "Yes" : "No");
+    let sorted = [...students].sort((a, b) => b.score - a.score);
+    let sortedList = sorted.map(s => `${s.name} (${s.score})`).join(", ");
+    document.getElementById("sortedStudents").innerHTML = "<b>Sorted by Score (Desc):</b> " + sortedList;
+  </script>
+</body>
+</html>
